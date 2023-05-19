@@ -9,6 +9,8 @@ jobs:
   github-pages:
     runs-on: ubuntu-latest
     steps:
+      - name: Make git use HTTP/1.1
+        run: git config --global http.version HTTP/1.1
       - uses: actions/checkout@v2
       - uses: helaili/jekyll-action@v2
         with:
