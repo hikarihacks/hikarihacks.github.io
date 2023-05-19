@@ -6,7 +6,7 @@ tags: misc ctf bsides 2023
 
 I have to admit that I was really scared to give this challenge a try, because I don't have a lot of experience with AI in general.
 
-We are <a href="/assets/files/model.pth">given</a> file with a .pth extension.
+We are <a href="/assets/files/model.pth">given</a> a file with a .pth extension.
 I had no idea what a .pth extension is and how to interpret the data there, so after a bit of <a href="https://letmegooglethat.com/?q=what+is+a+pth+file">googling</a>, I found out that the .pth file is used by PyTorch, a Python machine learning library.
 
 I loaded it in Python and got stuck. What activation function do I use? How did the author want us to discover the flag if we only have the weights? 
@@ -21,6 +21,7 @@ Here is the script that prints the flag:
 import torch
 
 weights = torch.load('model.pth')
+#print(weights)
 a = weights['layer.weight'].detach().cpu().numpy()
 result = ""
 for char in a[0]:
@@ -28,4 +29,4 @@ for char in a[0]:
 print(result)
 ```
 
-Thanks for reading and happy hacking :)
+Thanks for reading and keep hacking :)
