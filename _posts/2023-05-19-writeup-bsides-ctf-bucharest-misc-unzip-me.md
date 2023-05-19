@@ -4,7 +4,7 @@ title:  "Writeup for Bsides Bucharest 2023 Misc Challenge : Unzip Me"
 tags: misc ctf bsides 2023
 ---
 
-We are ![given](/assets/files/l0amyydk1p.zip) a password protected ZIP archive with a weird name.
+We are <a href="/assets/files/l0amyydk1p.zip">given</a> a password protected ZIP archive with a weird name.
 
 My first idea was to try and crack it using John The Ripper, so I created a hash using
 
