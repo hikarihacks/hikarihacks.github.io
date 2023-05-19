@@ -13,5 +13,5 @@ jobs:
       - uses: helaili/jekyll-action@v2
         with:
           token: $
-          target_branch: main
+          target_branch: gh-pages
 
