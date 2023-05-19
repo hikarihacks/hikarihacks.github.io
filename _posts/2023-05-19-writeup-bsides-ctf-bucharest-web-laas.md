@@ -17,7 +17,8 @@ Let's inspect the source code for the challenge and try to find the catch.
 We can control two variables : 
 ```php
 $_POST['file']
-``` and 
+``` 
+and 
 ```php 
 $_POST['mac']
 ```
