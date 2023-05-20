@@ -20,13 +20,43 @@ Our main point of interest are /proc/self/environ and /proc/self/cmdline.
 By dumping /proc/self/environ we find out the working directory of the application.
 By dumping /proc/self/cmdline we find out the name of the source code file.
 
-<img src="/assets/images/app-js-nodebug" alt="Source code for the challenge">
+```js
+const express = require('express');
+const fs = require('fs');
+const {
+    cpuUsage
+} = require('process');
+const app = express(); // flag is in flag.txt 
+app.get('/', (req, res) => {
+    try {
+        let file = req.query.file;
+        let debug = req.query.debug;
+        if (!file) {
+            res.send("Missing file parameter");
+            return;
+        }
+        if (debug) {
+            file = new global[debug](file);
+        }
+        if (file.toString().includes('flag')) {
+            res.send("Hacker detected");
+            return;
+        }
+        res.send(fs.readFileSync(file, 'utf8').toString());
+    } catch {
+        res.send("Something bad happened");
+    }
+});
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
+```
 
-Great, we find the source code!
+Great, we found the source code!
 Now, let's see what we can exploit here.
 
 Normally, we would have to read the flag.txt file from the /usr/src/app folder (found using /proc/self/environ).
-However. our file cannot contain the substring '_flag_'.
+However. our file cannot contain the substring _flag_.
 
 ```js
  if (debug) { 
