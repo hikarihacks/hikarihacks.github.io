@@ -46,6 +46,11 @@ In order to meet the last condition, we can use URL encoding that would internal
 Therefore, our payload will be:
 ```bash
 curl -s 'https://nodebug.fly.dev?debug=URL&file=file:///usr/src/app/fl%2561g.txt'
+``
+
+Please note that the string should be double URL encoded as we send it, because the first time it is automatically URL decoded by the backend. Practically, what the backend receives is actually 
+```txt
+file=file:///usr/src/app/fl%61g.txt
 ```
 
 Thanks for reading and keep hacking :)
